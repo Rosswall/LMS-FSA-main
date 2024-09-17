@@ -1,0 +1,27 @@
+<h1>Manage Members of {{ group.group_name }}</h1>
+
+<h2>Current Members:</h2>
+<h2>Members</h2>
+<ul>
+    {% for member in members %}
+        <li>
+            {{ member.user.username }} (Joined on: {{ member.joined_at }})
+            <a href="{% url 'collaboration_group:remove_member' group.id member.id %}">Remove</a>
+        </li>
+    {% empty %}
+        <li>No members in this group yet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Add New Member:</h2>
+<form method="post">
+    {% csrf_token %}
+    <select name="user_id">
+        {% for user in all_users %}
+            <option value="{{ user.id }}">{{ user.full_name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" name="add_member">Add Member</button>
+</form>
+
+<a href="{% url 'collaboration_group:collaboration_group_list' %}">Back to Group List</a>

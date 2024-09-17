@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main.views import home
+AUTH_USER_MODEL = 'user.User'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +37,7 @@ urlpatterns = [
     path('training_program_subjects/', include('training_program_subjects.urls')),  
     # path('user/', include('user.urls')),
     # path('user_module/', include('user_module.urls')),  
-    
+    path('collaboration_group/', include('collaboration_group.urls')),  # Include URLs for collaboration_group app
          
     # Add more paths for other new apps here
 ]
