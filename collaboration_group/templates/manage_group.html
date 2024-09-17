@@ -2,31 +2,95 @@
 <html>
 <head>
     <title>Manage Group: {{ group.group_name }}</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+        form table {
+            width: auto;
+            border: none;
+            margin-top: 20px;
+        }
+        form select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        form button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Manage Group: {{ group.group_name }}</h1>
     
     <h2>Members</h2>
-    <ul>
-        {% for member in members %}
-            <li>
-                {{ member.user.username }} (Joined on: {{ member.joined_at }})
-                <a href="{% url 'collaboration_group:remove_member' group.id member.member_id %}">Remove</a>
-            </li>
-        {% empty %}
-            <li>No members in this group yet.</li>
-        {% endfor %}
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Joined On</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                <tr>
+                    <td>{{ member.user.username }}</td>
+                    <td>{{ member.joined_at }}</td>
+                    <td>
+                        <a href="{% url 'collaboration_group:remove_member' group.id member.member_id %}">Remove</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No members in this group yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <h2>Add Member</h2>
     <form method="post">
         {% csrf_token %}
-        <select name="user_id">
-            {% for user in all_users %}
-                <option value="{{ user.id }}">{{ user.full_name }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Add Member</button>
+        <table>
+            <tr>
+                <td>
+                    <select name="user_id">
+                        {% for user in all_users %}
+                            <option value="{{ user.id }}">{{ user.full_name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <button type="submit">Add Member</button>
+                </td>
+            </tr>
+        </table>
     </form>
     <a href="{% url 'collaboration_group:collaboration_group_list' %}">Back to Group List</a>
 </body>
