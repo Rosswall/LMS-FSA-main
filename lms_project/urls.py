@@ -38,6 +38,6 @@ urlpatterns = [
     # path('user/', include('user.urls')),
     # path('user_module/', include('user_module.urls')),  
     path('collaboration_group/', include('collaboration_group.urls')),  # Include URLs for collaboration_group app
-         
+    path('chat/', include('chat.urls')),  # Include URLs for chat app
     # Add more paths for other new apps here
 ]

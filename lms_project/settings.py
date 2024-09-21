@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'collaboration_member',
     # 'quiz',
     'user_module',
+    'chat',
 ]
 
 
