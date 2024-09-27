@@ -40,4 +40,7 @@ urlpatterns = [
     path('collaboration_group/', include('collaboration_group.urls')),  # Include URLs for collaboration_group app
     path('chat/', include('chat.urls')),  # Include URLs for chat app
     # Add more paths for other new apps here
+    path('chatroom/', include('chatroom.urls')),  # Include URLs for chatroom app
+    # Include URLs for main app
+    path('thread/',include('thread.urls')), 
 ]

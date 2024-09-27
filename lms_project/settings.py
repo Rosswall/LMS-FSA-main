@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['*']
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  # or 'bootstrap5'
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,8 +57,9 @@ INSTALLED_APPS = [
     # 'quiz',
     'user_module',
     'chat',
+    'chatroom',
+    'thread',
 ]
-
 
 
 MIDDLEWARE = [

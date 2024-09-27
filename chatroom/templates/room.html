@@ -1,0 +1,11 @@
+<h2>{{ room.name }}</h2>
+<div>
+    {% for message in messages %}
+        <p><strong>{{ message.user.username }}:</strong> {{ message.content }}</p>
+    {% endfor %}
+</div>
+<form method="POST" action="{% url 'send_message' room.name %}">
+    {% csrf_token %}
+    <input type="text" name="content" placeholder="Type your message here...">
+    <button type="submit">Send</button>
+</form>
