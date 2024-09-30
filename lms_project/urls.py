@@ -43,4 +43,5 @@ urlpatterns = [
     path('chatroom/', include('chatroom.urls')),  # Include URLs for chatroom app
     # Include URLs for main app
     path('thread/',include('thread.urls')), 
+    path('chatapp/', include('chatapp.urls')),
 ]

@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'training_program_subjects',
     'category',
     'question',
-    'discussion_threads',
     'collaboration_group',
     'collaboration_member',
     # 'quiz',
@@ -59,6 +58,7 @@ INSTALLED_APPS = [
     'chat',
     'chatroom',
     'thread',
+    'chatapp'
 ]
 
 
@@ -73,6 +73,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'lms_project.urls'
+
 
 TEMPLATES = [
     {
